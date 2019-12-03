@@ -6,4 +6,7 @@
     <item
         android:id="@+id/cz"
         android:title="查找"/>
+    <item
+        android:id="@+id/delete"
+        android:title="删除全部"/>
 </menu>

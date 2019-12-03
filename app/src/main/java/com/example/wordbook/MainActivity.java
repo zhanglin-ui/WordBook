@@ -27,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
-        LitePal.getDatabase();
-        final List<Word> word= LitePal.findAll(Word.class);
-        Log.d("this",String.valueOf(word.size()));
+        LitePal.getDatabase();     
+        List<Word> word= LitePal.findAll(Word.class);
         ListView lv=(ListView)findViewById(R.id.lv);
-        ListAdapter1 lIstAdapter=new ListAdapter1(MainActivity.this,R.layout.listview_main,word);
-        lv.setAdapter(lIstAdapter);
+        LIstAdapter lIstAdapter=new LIstAdapter(MainActivity.this,R.layout.listview_main,word);
+        lv.setAdapter( lIstAdapter);
 
 
     }
@@ -48,12 +47,26 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.tj:
                 AADialog aa=new AADialog(this); aa.show();
-                LitePal.initialize(this);
+                List<Word> word= LitePal.findAll(Word.class);
+                LIstAdapter lIstAdapter=new LIstAdapter(MainActivity.this,R.layout.listview_main,word);
+                ListView lv=(ListView)findViewById(R.id.lv);
+                lv.setAdapter(lIstAdapter);
                 break;
             case R.id.cz:
                 BBDialog bb=new BBDialog(this);bb.show();
+                List<Word> word1= LitePal.findAll(Word.class);
+                LIstAdapter lIstAdapter1=new LIstAdapter(MainActivity.this,R.layout.listview_main,word1);
+                ListView lv1=(ListView)findViewById(R.id.lv);
+                lv1.setAdapter(lIstAdapter1);
                 break;
-                default:break;
+            case R.id.delete:
+                CCDialog cc=new CCDialog(this);cc.show();
+                List<Word> word2= LitePal.findAll(Word.class);
+                LIstAdapter lIstAdapter2=new LIstAdapter(MainActivity.this,R.layout.listview_main,word2);
+                ListView lv2=(ListView)findViewById(R.id.lv);
+                lv2.setAdapter(lIstAdapter2);
+                break;
+            default:break;
         }
         return true;
     }

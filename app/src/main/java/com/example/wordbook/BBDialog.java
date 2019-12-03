@@ -15,4 +15,5 @@ public class BBDialog extends Dialog {
         View view =View.inflate(getContext(),R.layout.select_main,null);
         setContentView(view);
     }
+
 }

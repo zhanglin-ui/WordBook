@@ -5,8 +5,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import org.litepal.crud.LitePalSupport;
 
-public class Word  {
-
+public class Word  extends LitePalSupport{
     private String Name;
     private String Shiyi;
     private String Liju;

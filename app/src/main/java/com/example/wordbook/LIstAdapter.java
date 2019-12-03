@@ -19,7 +19,7 @@ public class LIstAdapter extends ArrayAdapter{
     private List<Word> list;
 
     public LIstAdapter(@NonNull Context context, int resource,List<Word> list) {
-        super(context, resource);
+        super(context, resource,list);
         resouceId=resource;
         this.list=list;
     }
