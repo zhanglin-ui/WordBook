@@ -9,6 +9,14 @@ public class Word  extends LitePalSupport{
     private String Name;
     private String Shiyi;
     private String Liju;
+    public Word(){}
+
+    public Word(String toString, CharSequence text, CharSequence text1) {
+        this.Name=toString;
+        this.Shiyi=toString;
+        this.Liju=toString;
+    }
+
     public String getName(){
         return Name;
     }

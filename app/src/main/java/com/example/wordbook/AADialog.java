@@ -27,6 +27,7 @@ public class AADialog extends Dialog {
         bt1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
                 ListView lv=(ListView)findViewById(R.id.lv);
                 String a=et1.getText().toString();
                 String b=ed2.getText().toString();

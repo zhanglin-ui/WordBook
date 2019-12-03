@@ -31,8 +31,7 @@ public class LIstAdapter extends ArrayAdapter{
         TextView tv1=(TextView)view.findViewById(R.id.tv1);
         TextView tv2=(TextView)view.findViewById(R.id.tv2);
         TextView tv3=(TextView)view.findViewById(R.id.tv3);
-        Log.d("list","add");
-        tv1.setText("gan ni niang");
+        tv1.setText(word.getName());
         tv2.setText(word.getShiyi());
         tv3.setText(word.getLiju());
         return view;

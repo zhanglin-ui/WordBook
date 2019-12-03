@@ -9,4 +9,7 @@
     <item
         android:id="@+id/delete"
         android:title="删除全部"/>
+    <item
+        android:id="@+id/refresh"
+        android:title="刷新"/>
 </menu>

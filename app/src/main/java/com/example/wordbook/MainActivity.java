@@ -3,6 +3,7 @@ package com.example.wordbook;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -28,12 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
         LitePal.getDatabase();     
-        List<Word> word= LitePal.findAll(Word.class);
-        ListView lv=(ListView)findViewById(R.id.lv);
-        LIstAdapter lIstAdapter=new LIstAdapter(MainActivity.this,R.layout.listview_main,word);
-        lv.setAdapter( lIstAdapter);
-
-
+        init();
     }
 
     @Override
@@ -47,27 +44,39 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.tj:
                 AADialog aa=new AADialog(this); aa.show();
-                List<Word> word= LitePal.findAll(Word.class);
-                LIstAdapter lIstAdapter=new LIstAdapter(MainActivity.this,R.layout.listview_main,word);
-                ListView lv=(ListView)findViewById(R.id.lv);
-                lv.setAdapter(lIstAdapter);
+                aa.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                       init();
+                    }
+                });
                 break;
             case R.id.cz:
                 BBDialog bb=new BBDialog(this);bb.show();
-                List<Word> word1= LitePal.findAll(Word.class);
-                LIstAdapter lIstAdapter1=new LIstAdapter(MainActivity.this,R.layout.listview_main,word1);
-                ListView lv1=(ListView)findViewById(R.id.lv);
-                lv1.setAdapter(lIstAdapter1);
+                init();
                 break;
             case R.id.delete:
                 CCDialog cc=new CCDialog(this);cc.show();
-                List<Word> word2= LitePal.findAll(Word.class);
-                LIstAdapter lIstAdapter2=new LIstAdapter(MainActivity.this,R.layout.listview_main,word2);
-                ListView lv2=(ListView)findViewById(R.id.lv);
-                lv2.setAdapter(lIstAdapter2);
+                init();
                 break;
-            default:break;
+            case R.id.refresh:
+                init();
+                break;
         }
         return true;
+    }
+
+    private  void init(){
+        final List<Word> word= LitePal.findAll(Word.class);
+        LIstAdapter lIstAdapter=new LIstAdapter(MainActivity.this,R.layout.listview_main,word);
+        ListView lv=(ListView)findViewById(R.id.lv);
+        lv.setAdapter(lIstAdapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DDDialog dd=new DDDialog(MainActivity.this,(Word) parent.getItemAtPosition(position));
+                dd.show();
+            }
+        });
     }
 }
