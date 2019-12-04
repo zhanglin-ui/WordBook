@@ -23,7 +23,7 @@ public class CCDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 LitePal.deleteAll(Word.class);
-                CCDialog.super.cancel();
+                dismiss();
             }
         });
         delete2.setOnClickListener(new View.OnClickListener(){

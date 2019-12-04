@@ -3,6 +3,8 @@ package com.example.wordbook;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -57,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.delete:
                 CCDialog cc=new CCDialog(this);cc.show();
-                init();
                 break;
             case R.id.refresh:
                 init();
+                break;
+            case R.id.bz:
+                new AlertDialog.Builder(MainActivity.this).setTitle("帮助").setMessage("这里是帮助").show();
                 break;
         }
         return true;
@@ -68,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
     private  void init(){
         final List<Word> word= LitePal.findAll(Word.class);
-        LIstAdapter lIstAdapter=new LIstAdapter(MainActivity.this,R.layout.listview_main,word);
-        ListView lv=(ListView)findViewById(R.id.lv);
+        final LIstAdapter lIstAdapter=new LIstAdapter(MainActivity.this,R.layout.listview_main,word);
+        final ListView lv=(ListView)findViewById(R.id.lv);
         lv.setAdapter(lIstAdapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

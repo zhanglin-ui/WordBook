@@ -28,7 +28,6 @@ public class DDDialog extends Dialog{
         TextView tv11=(TextView)findViewById(R.id.tv11);
         TextView tv12=(TextView)findViewById(R.id.tv12);
         TextView tv13=(TextView)findViewById(R.id.tv13);
-        System.out.println(word.getName());
         tv11.setText(word.getName());
         tv12.setText(word.getShiyi());
         tv13.setText(word.getLiju());
@@ -37,7 +36,9 @@ public class DDDialog extends Dialog{
         bt11.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                EEDialog ee=new EEDialog(getContext(),word);
+                ee.show();
+                dismiss();
             }
         });
         bt12.setOnClickListener(new View.OnClickListener(){
@@ -45,12 +46,6 @@ public class DDDialog extends Dialog{
             public void onClick(View v){
                 LitePal.delete(Word.class,word.delete());
                 dismiss();
-            }
-        });
-        bt11.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-
             }
         });
     }

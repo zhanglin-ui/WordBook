@@ -12,27 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="单词："
-            android:gravity="center" />
+            android:textSize="15dp"/>
+
         <EditText
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/et4"
             android:gravity="center"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="292dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:id="@+id/select"
             android:text="查找"
-            android:layout_gravity="center_horizontal"/>
+            android:gravity="center"/>
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv2"
+        android:layout_width="365dp"
+        android:layout_height="300dp" />
+
 
 </LinearLayout>
